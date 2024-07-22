@@ -1,6 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface InitialStateData {
+    name: string;
+    surname: string;
+    email: string;
+    title: string;
+    message: string;
+    notifications: number
+};
+
+const initialState: InitialStateData = {
     name: "",
     surname: "",
     email: "",
@@ -30,9 +39,22 @@ const slice = createSlice({
         },
         updateNotifications: (state) => {
             state.notifications++;
+        },
+        clearAll: (state) => {
+            state.name = "", state.surname = "",
+            state.email = "", state.title = "",
+            state.message = "";
         }
     }
 });
 
-export const {updateName, updateSurname, updateEmail, updateTitle, updateMessage, updateNotifications} = slice.actions;
+export const {
+  updateName,
+  updateSurname,
+  updateEmail,
+  updateTitle,
+  updateMessage,
+  updateNotifications,
+  clearAll,
+} = slice.actions;
 export default slice.reducer;
